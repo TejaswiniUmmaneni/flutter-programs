@@ -1,0 +1,107 @@
+import 'dart:html';
+import 'dart:js';
+import 'dart:js_util';
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: EnableDisableStack(),
+    debugShowCheckedModeBanner: false,
+  ));
+}
+
+class EnableDisableStack extends StatefulWidget {
+  @override
+  State<EnableDisableStack> createState() => _EnableDisableStackState();
+}
+
+class _EnableDisableStackState extends State<EnableDisableStack> {
+  bool isEnabled = true;
+  int count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Enable & Disable with stack",
+          style: TextStyle(color: Colors.red, fontStyle: FontStyle.italic),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: 150,
+                  height: 150,
+                  color: Colors.blue,
+                ),
+                Container(
+                  width: 80,
+                  height: 80,
+                  color: Colors.green,
+                )
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Switch(
+              value: isEnabled,
+              onChanged: (value) {
+                setState(() {
+                  isEnabled = value;
+                });
+              },
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: isEnabled
+                  ? () {
+                      print("Button pressed");
+                    }
+                  : null,
+              child: Text("Submit"),
+            ),
+            SizedBox(height: 30),
+            Text(
+              "Count: $count",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      count++;
+                    });
+                  },
+                  child: Text("Increment"),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      count--;
+                    });
+                  },
+                  child: Text("Decrement"),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
