@@ -1,0 +1,109 @@
+import 'dart:html';
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        backgroundColor: Color(0xffcab7e8),
+        appBar: AppBar(
+          backgroundColor: Colors.lightBlueAccent,
+          title: Text(
+            'Student Profile Card',
+            style: TextStyle(
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.bold,
+              color: Color(0xffde0f00),
+            ),
+          ),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 65,
+                backgroundImage: AssetImage('web/images/student.jpeg'),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Ummaneni Tejaswini',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Roll Number:24PA1A05N2',
+                style: TextStyle(fontSize: 18, color: Colors.black),
+              ),
+              Text(
+                'Branch: CSE',
+                style: TextStyle(fontSize: 18, color: Colors.black),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              Container(
+                  margin: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(color: Colors.white),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.phone,
+                        color: Colors.red,
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        '+91 8309254617',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
+                      )
+                    ],
+                  )),
+              SizedBox(height: 8),
+              Container(
+                  margin: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(color: Colors.grey),
+                      ]),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.email,
+                        color: Colors.red,
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        'ummanenitejaswini@gmail.com',
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      )
+                    ],
+                  ))
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
