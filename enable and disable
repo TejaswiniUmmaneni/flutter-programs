@@ -1,53 +1,47 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    home: EnableDisableExample(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class EnableDisableExample extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  State<EnableDisableExample> createState() =>
+      _EnableDisableExampleState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+class _EnableDisableExampleState extends State<EnableDisableExample> {
+  bool isEnabled = true;
 
-class _MyHomePageState extends State<MyHomePage> {
-  int c = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Stateful Widget Example",
-            style: TextStyle(color: Colors.red)),
+        title: Text("Enable & Disable"),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.school,
-              size: 100,
-              color: Colors.blue,
-            ),
-            SizedBox(height: 20),
-            Text("Count:$c", style: TextStyle(fontSize: 24)),
-            ElevatedButton(
-              onPressed: () {
+            Switch(
+              value: isEnabled,
+              onChanged: (value) {
                 setState(() {
-                  c++;
+                  isEnabled = value;
                 });
               },
-              child: Text("Increment"),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: isEnabled
+                  ? () {
+                      print("Button Pressed");
+                    }
+                  : null, // Disabled when null
+              child: Text("Submit"),
             ),
           ],
         ),
